@@ -1,0 +1,243 @@
+:root {
+    --primary: #00f7ff;
+    --secondary: #1e3a78;
+    --bg: #0a0e17;
+    --glass: rgba(255, 255, 255, 0.05);
+    --white-soft: rgba(255, 255, 255, 0.1);
+    --radius: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    background: var(--bg) url('https://files.catbox.moe/lkn302.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 23, 0.85);
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+h1 {
+    color: var(--primary);
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.floating-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgba(0, 247, 255, 0.2);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    user-select: none;
+}
+
+.stats-box {
+    background: var(--glass);
+    border: 1px solid var(--white-soft);
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    padding: 0;
+}
+
+.api-card {
+    background: var(--glass);
+    border: 1px solid var(--white-soft);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    backdrop-filter: blur(12px);
+    color: white;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.api-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 247, 255, 0.15);
+    border-color: var(--primary);
+}
+
+.api-status {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.online {
+    background-color: #34C759;
+    box-shadow: 0 0 10px #34C759;
+}
+
+.offline {
+    background-color: #964B00;
+}
+
+.copy-button,
+.test-button {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.copy-button {
+    background-color: var(--primary);
+    color: black;
+    font-weight: bold;
+}
+
+.copy-button:hover {
+    background-color: #00e0ff;
+}
+
+.test-button {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+.test-button:hover {
+    background-color: #3a9e40;
+}
+
+.support-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    border: 1px solid var(--primary);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+}
+
+.support-link:hover {
+    background: rgba(0, 247, 255, 0.1);
+    text-shadow: 0 0 8px var(--primary);
+}
+
+@media (max-width: 768px) {
+    .api-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .api-card {
+        font-size: 0.95rem;
+    }
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.support-toggle {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.support-toggle:hover {
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+}
+
+#support-panel {
+    display: none;
+    background: var(--glass);
+    border: 1px solid var(--white-soft);
+    padding: 1rem;
+    border-radius: var(--radius);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+#support-panel a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+#support-panel a:hover {
+    color: #00e0ff;
+}
+
+footer, .copyright {
+    color: #888;
+    font-size: 0.85rem;
+}
